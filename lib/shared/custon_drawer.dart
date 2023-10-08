@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaapp/pages/configuracoes_page.dart';
+import 'package:trilhaapp/pages/configuracoes/configuracoes_page.dart';
 import 'package:trilhaapp/pages/dados_cadastrais.dart';
 import 'package:trilhaapp/pages/login_page.dart';
-import 'package:trilhaapp/pages/numeros_aleatorios_page.dart';
+import 'package:trilhaapp/pages/numeros_aleatorios/numeros_aleatorios_hive_page.dart';
+import 'package:trilhaapp/pages/numeros_aleatorios/numeros_aleatorios_shared_preferences_page.dart';
 
 class CustonDrawer extends StatelessWidget {
   const CustonDrawer({super.key});
@@ -162,7 +163,33 @@ class CustonDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (bc) => const NumerosAleatoriosPage()));
+                      builder: (bc) =>
+                          const NumerosAleatoriosSharedPreferencesPage()));
+            },
+          ),
+          Divider(),
+          SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                width: double.infinity,
+                child: Row(
+                  children: [
+                    Icon(Icons.numbers),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text("Hive"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (bc) => const NumerosAleatoriosHivePage()));
             },
           ),
           Divider(),
